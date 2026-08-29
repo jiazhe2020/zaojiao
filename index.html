@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="小派早教">
+<meta name="theme-color" content="#FF8C7A">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<title>小派早教工作台</title>
+<style>
+/* ====== Reset & Base ====== */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --fine:#FF8C7A;--fine-bg:#FFF0ED;
+  --lang:#5BBAA0;--lang-bg:#E8F6F1;
+  --cog:#F5A623;--cog-bg:#FEF5E7;
+  --eng:#5BA0E0;--eng-bg:#E9F2FB;
+  --gross:#A87CE0;--gross-bg:#F2EAF9;
+  --observe:#FF6B9D;--observe-bg:#FFE9F0;
+  --bg:#FFF9F4;--surface:#FFFFFF;
+  --text:#4A3F3A;--text2:#8B7D75;--text3:#BFB3A8;
+  --border:#F0E6DE;--border2:#E5D8CE;
+  --shadow:0 2px 12px rgba(180,140,120,.08);
+  --shadow-md:0 4px 20px rgba(180,140,120,.12);
+  --radius:14px;--radius-sm:10px;--radius-lg:20px;
+  --nav-w:82px;
+}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+  background:var(--bg);color:var(--text);
+  font-size:14px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ====== App Layout ====== */
+.app{display:flex;height:100dvh;overflow:hidden}
+
+/* ====== Sidebar ====== */
+.sidebar{
+  flex-shrink:0;width:var(--nav-w);
+  background:linear-gradient(180deg,#FFF0ED 0%,#FFE9F0 100%);
+  display:flex;flex-direction:column;
+  border-right:1px solid var(--border);
+  z-index:100;
+}
+.sidebar-header{
+  padding:14px 0 10px;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.5);
+}
+.baby-avatar{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,#FF8C7A,#FFB5A7);
+  color:#fff;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 4px;box-shadow:0 2px 8px rgba(255,140,122,.3);
+}
+.baby-info{font-size:10px;color:var(--text2);font-weight:600}
+.nav-items{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding:6px 0}
+.nav-items::-webkit-scrollbar{width:0}
+.nav-item{
+  display:flex;flex-direction:column;align-items:center;
+  padding:9px 2px;cursor:pointer;color:var(--text2);
+  text-decoration:none;transition:all .2s;
+  border-radius:10px;margin:2px 6px;gap:3px;
+  position:relative;
+}
+.nav-item .nav-icon{font-size:22px;line-height:1}
+.nav-item .nav-label{font-size:10px;font-weight:600;white-space:nowrap}
+.nav-item.active{
+  background:#fff;color:var(--fine);
+  box-shadow:0 2px 8px rgba(255,140,122,.15);
+}
+.nav-item.active::before{
+  content:'';position:absolute;left:-6px;top:50%;transform:translateY(-50%);
+  width:3px;height:20px;background:var(--fine);border-radius:0 3px 3px 0;
+}
+
+/* ====== Content Area ====== */
+.content{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
+.content::-webkit-scrollbar{width:4px}
+.content::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+.page{display:none;padding:16px 16px 100px;max-width:680px;margin:0 auto}
+.page.active{display:block;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ====== Page Header ====== */
+.page-header{margin-bottom:16px}
+.page-title{font-size:20px;font-weight:800;color:var(--text)}
+.page-date{font-size:12px;color:var(--text2);margin-top:2px}
+.theme-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px;border-radius:20px;
+  font-size:12px;font-weight:700;margin-top:8px;
+}
+.theme-badge.color{background:#FFE4DE;color:#E85D4E}
+.theme-badge.fruit{background:#E8F6F1;color:#3A9B7A}
+.theme-badge.animal{background:#FEF5E7;color:#C8851A}
+.theme-badge.body{background:#F2EAF9;color:#8654C4}
+.theme-badge.daily{background:#E9F2FB;color:#3A7BC4}
+.theme-badge.housework{background:#FFE9F0;color:#D44A7A}
+.theme-badge.nature{background:#E8F5E9;color:#4A9D5A}
+
+/* ====== Module Cards ====== */
+.module{
+  background:var(--surface);border-radius:var(--radius);
+  margin-bottom:12px;overflow:hidden;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.module-header{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 14px;cursor:pointer;
+  transition:background .2s;
+}
+.module-header:active{background:rgba(0,0,0,.02)}
+.module-icon{
+  width:38px;height:38px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.module-fine .module-icon{background:var(--fine-bg)}
+.module-lang .module-icon{background:var(--lang-bg)}
+.module-cog .module-icon{background:var(--cog-bg)}
+.module-eng .module-icon{background:var(--eng-bg)}
+.module-gross .module-icon{background:var(--gross-bg)}
+.module-observe .module-icon{background:var(--observe-bg)}
+.module-title{flex:1;min-width:0}
+.module-title h2{font-size:15px;font-weight:700;color:var(--text)}
+.module-title .module-sub{font-size:11px;color:var(--text3)}
+.module-toggle{font-size:12px;color:var(--text3);transition:transform .3s}
+.module.collapsed .module-toggle{transform:rotate(-90deg)}
+.module.collapsed .module-body{display:none}
+
+.module-check{
+  width:26px;height:26px;border-radius:50%;
+  border:2px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;transition:all .2s;
+  position:relative;
+}
+.module-check input{display:none}
+.module-check .check-mark{
+  font-size:14px;color:#fff;opacity:0;transition:opacity .2s;
+}
+.module-check.checked{border-color:var(--fine);background:var(--fine)}
+.module-check.checked .check-mark{opacity:1}
+.module-lang .module-check.checked{border-color:var(--lang);background:var(--lang)}
+.module-cog .module-check.checked{border-color:var(--cog);background:var(--cog)}
+.module-eng .module-check.checked{border-color:var(--eng);background:var(--eng)}
+.module-gross .module-check.checked{border-color:var(--gross);background:var(--gross)}
+.module-observe .module-check.checked{border-color:var(--observe);background:var(--observe)}
+
+.module-body{padding:0 14px 14px}
+
+/* ====== Task Items ====== */
+.task-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px;border-radius:var(--radius-sm);
+  background:var(--bg);margin-bottom:8px;
+}
+.task-item:last-child{margin-bottom:0}
+.task-num{
+  width:24px;height:24px;border-radius:7px;
+  background:var(--fine-bg);color:var(--fine);
+  font-size:12px;font-weight:700;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.module-lang .task-num{background:var(--lang-bg);color:var(--lang)}
+.module-cog .task-num{background:var(--cog-bg);color:var(--cog)}
+.module-eng .task-num{background:var(--eng-bg);color:var(--eng)}
+.module-gross .task-num{background:var(--gross-bg);color:var(--gross)}
+.task-content{flex:1;min-width:0}
+.task-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.task-desc{font-size:12px;color:var(--text2);line-height:1.5}
+.task-tag{
+  display:inline-block;font-size:10px;font-weight:600;
+  padding:2px 7px;border-radius:6px;margin-top:4px;
+  background:var(--fine-bg);color:var(--fine);
+}
+.module-lang .task-tag{background:var(--lang-bg);color:var(--lang)}
+.module-cog .task-tag{background:var(--cog-bg);color:var(--cog)}
+.module-eng .task-tag{background:var(--eng-bg);color:var(--eng)}
+.module-gross .task-tag{background:var(--gross-bg);color:var(--gross)}
+
+/* ====== Play Button (English) ====== */
+.play-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 11px;border-radius:20px;
+  background:var(--eng);color:#fff;border:none;
+  font-size:12px;font-weight:600;cursor:pointer;
+  transition:all .2s;
+}
+.play-btn:active{transform:scale(.95)}
+.play-btn.playing{background:var(--eng);opacity:.7}
+.play-btn .play-icon{font-size:14px}
+
+/* ====== Speech Box ====== */
+.speech-box{
+  padding:10px 12px;border-radius:var(--radius-sm);
+  background:var(--lang-bg);margin-bottom:8px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.speech-text{flex:1;font-size:13px;color:var(--text);line-height:1.5}
+.speech-text .cn{font-weight:600}
+.speech-text .en{font-size:12px;color:var(--text2);font-style:italic}
+.speech-play{
+  width:30px;height:30px;border-radius:50%;
+  border:none;background:var(--lang);color:#fff;
+  font-size:13px;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.speech-play:active{transform:scale(.9)}
+
+/* ====== Observe Section ====== */
+.observe-card{
+  background:var(--surface);border-radius:var(--radius);
+  margin-bottom:12px;overflow:hidden;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.observe-cat-header{
+  padding:12px 14px;font-size:14px;font-weight:700;
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+}
+.observe-cat-header .cat-icon{font-size:18px}
+.observe-cat-header .cat-count{margin-left:auto;font-size:11px;color:var(--text3);font-weight:600}
+.observe-items{padding:0 14px 12px}
+.observe-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;border-bottom:1px solid var(--border);
+}
+.observe-item:last-child{border-bottom:none}
+.observe-check{
+  width:22px;height:22px;border-radius:6px;
+  border:2px solid var(--border2);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .2s;
+}
+.observe-check.checked{border-color:var(--fine);background:var(--fine)}
+.observe-check .chk{font-size:12px;color:#fff;opacity:0}
+.observe-check.checked .chk{opacity:1}
+.observe-item .obs-text{flex:1;font-size:13px;color:var(--text);line-height:1.4}
+
+/* ====== Filter Chips ====== */
+.filter-section{margin-bottom:14px}
+.filter-label{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:8px}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  padding:5px 12px;border-radius:20px;
+  font-size:12px;font-weight:600;cursor:pointer;
+  background:var(--surface);border:1px solid var(--border2);
+  color:var(--text2);transition:all .2s;
+}
+.chip.active{background:var(--fine);color:#fff;border-color:var(--fine)}
+
+/* ====== Activity Card ====== */
+.act-card{
+  background:var(--surface);border-radius:var(--radius);
+  padding:12px;margin-bottom:10px;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.act-card .act-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.act-card .act-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px}
+.act-tags{display:flex;gap:5px;flex-wrap:wrap}
+.act-tag{
+  font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px;
+}
+.act-tag.domain{background:var(--fine-bg);color:var(--fine)}
+.act-tag.theme{background:var(--eng-bg);color:var(--eng)}
+
+/* ====== Tool List ====== */
+.tool-section{margin-bottom:16px}
+.tool-section-title{
+  font-size:14px;font-weight:700;margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.tool-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tool-item{
+  background:var(--surface);border-radius:var(--radius-sm);
+  padding:10px;border:1px solid var(--border);
+  font-size:12px;color:var(--text);
+}
+.tool-item .tool-name{font-weight:600;margin-bottom:2px}
+.tool-item .tool-desc{font-size:11px;color:var(--text2)}
+
+/* ====== Space Layout ====== */
+.space-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
+.space-card{
+  background:var(--surface);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.space-card-header{
+  padding:12px 14px;font-size:14px;font-weight:700;
+  display:flex;align-items:center;gap:8px;
+}
+.space-card-body{padding:0 14px 14px}
+.space-card-body p{font-size:12px;color:var(--text2);margin-bottom:6px;line-height:1.5}
+.space-checklist{list-style:none;padding:0}
+.space-checklist li{
+  font-size:12px;color:var(--text);padding:4px 0;
+  display:flex;align-items:flex-start;gap:6px;
+}
+.space-checklist li::before{content:'✓';color:var(--lang);font-weight:700;flex-shrink:0}
+
+/* ====== Principle Card ====== */
+.principle-card{
+  background:var(--surface);border-radius:var(--radius);
+  padding:14px;margin-bottom:10px;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:12px;
+}
+.principle-num{
+  width:30px;height:30px;border-radius:9px;
+  background:var(--fine-bg);color:var(--fine);
+  font-size:14px;font-weight:800;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.principle-text{flex:1}
+.principle-text .p-title{font-size:14px;font-weight:700;margin-bottom:3px}
+.principle-text .p-desc{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* ====== Food Menu ====== */
+.food-day{margin-bottom:14px}
+.food-day-header{
+  font-size:14px;font-weight:700;margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+  padding:8px 12px;border-radius:var(--radius-sm);
+  background:var(--fine-bg);color:var(--fine);
+}
+.food-meal{
+  background:var(--surface);border-radius:var(--radius-sm);
+  padding:10px 12px;margin-bottom:6px;
+  border:1px solid var(--border);
+}
+.food-meal-title{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:4px}
+.food-items{font-size:13px;color:var(--text);line-height:1.6}
+.food-shopping{
+  background:#FEF5E7;border-radius:var(--radius-sm);
+  padding:10px 12px;margin-top:6px;
+}
+.food-shopping-title{font-size:12px;font-weight:700;color:#C8851A;margin-bottom:4px}
+.food-shopping-list{font-size:12px;color:var(--text);line-height:1.7}
+.nutrition-box{
+  background:#E8F5E9;border-radius:var(--radius-sm);
+  padding:10px 12px;margin-bottom:10px;border:1px solid #C8E6C9;
+}
+.nutrition-title{font-size:12px;font-weight:700;color:#4A9D5A;margin-bottom:4px}
+.nutrition-text{font-size:12px;color:var(--text);line-height:1.6}
+
+/* ====== Recipe Card ====== */
+.meal-card{margin-bottom:10px}
+.meal-header{
+  font-size:12px;font-weight:700;color:var(--text2);
+  padding:4px 2px;margin-bottom:6px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.meal-time{font-size:11px;color:var(--text3);font-weight:400}
+.dish-card{
+  background:var(--surface);border-radius:var(--radius);
+  margin-bottom:8px;overflow:hidden;
+  border:1px solid var(--border);box-shadow:var(--shadow);
+}
+.dish-card-header{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;cursor:pointer;
+}
+.dish-card-header:active{background:rgba(0,0,0,.02)}
+.dish-img{
+  width:54px;height:54px;border-radius:10px;
+  object-fit:cover;flex-shrink:0;
+  border:1px solid var(--border);
+}
+.dish-img-placeholder{
+  width:54px;height:54px;border-radius:10px;
+  background:var(--fine-bg);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;
+}
+.dish-info{flex:1;min-width:0}
+.dish-name{font-size:14px;font-weight:700;color:var(--text)}
+.dish-ingredients{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.ingredient-tag{
+  font-size:10px;font-weight:600;padding:1px 6px;
+  border-radius:4px;background:var(--fine-bg);color:var(--fine);
+}
+.dish-toggle{
+  font-size:11px;color:var(--text3);white-space:nowrap;
+  transition:transform .3s;flex-shrink:0;
+}
+.dish-card.collapsed .dish-toggle{transform:rotate(-90deg)}
+.dish-card.collapsed .dish-card-body{display:none}
+.dish-card-body{padding:0 12px 12px}
+.dish-simple{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;font-size:13px;color:var(--text2);
+}
+.dish-emoji{font-size:18px}
+.dish-name-simple{font-weight:600}
+.recipe-steps{margin-bottom:8px}
+.recipe-step{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:6px 0;border-bottom:1px solid var(--border);
+}
+.recipe-step:last-child{border-bottom:none}
+.step-num{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--fine);color:#fff;
+  font-size:11px;font-weight:700;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-text{font-size:12px;color:var(--text);line-height:1.5;flex:1}
+.recipe-tip{
+  font-size:11px;color:var(--text2);line-height:1.5;
+  padding:8px 10px;border-radius:var(--radius-sm);
+  background:var(--fine-bg);
+}
+
+/* ====== English Section ====== */
+.eng-section{margin-bottom:16px}
+.eng-section-title{
+  font-size:15px;font-weight:700;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;color:var(--eng);
+}
+.eng-card{
+  background:var(--surface);border-radius:var(--radius);
+  padding:12px 14px;margin-bottom:8px;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.eng-card .eng-word{font-size:16px;font-weight:700;color:var(--text)}
+.eng-card .eng-meaning{font-size:12px;color:var(--text2);margin-top:2px}
+.eng-card .eng-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+
+/* ====== Theme Week ====== */
+.theme-week-card{
+  background:var(--surface);border-radius:var(--radius);
+  padding:14px;margin-bottom:10px;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.theme-week-card.current{border:2px solid var(--fine)}
+.theme-week-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.theme-week-name{font-size:15px;font-weight:700}
+.theme-week-badge{
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;
+  background:var(--fine);color:#fff;
+}
+.theme-week-desc{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* ====== Notice Box ====== */
+.notice-box{
+  background:#FFF5E6;border-radius:var(--radius);
+  padding:12px 14px;margin:12px 0;
+  border:1px solid #FFE0B2;
+}
+.notice-box .notice-title{font-size:13px;font-weight:700;color:#C8851A;margin-bottom:4px}
+.notice-box .notice-text{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* ====== Ban Box ====== */
+.ban-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ban-item{
+  background:#FFF0F0;border-radius:var(--radius-sm);
+  padding:10px;border:1px solid #FFD0D0;
+  display:flex;align-items:flex-start;gap:6px;
+}
+.ban-item .ban-icon{font-size:16px;flex-shrink:0}
+.ban-item .ban-text{font-size:12px;color:#C44;color:var(--text);line-height:1.4}
+
+/* ====== Progress Bar ====== */
+.progress-bar{
+  height:6px;border-radius:3px;background:var(--border);
+  overflow:hidden;margin:8px 0;
+}
+.progress-fill{
+  height:100%;border-radius:3px;
+  background:linear-gradient(90deg,var(--fine),var(--cog));
+  transition:width .3s;
+}
+
+/* ====== Responsive ====== */
+@media(max-width:380px){
+  :root{--nav-w:68px}
+  .nav-item .nav-icon{font-size:20px}
+  .nav-item .nav-label{font-size:9px}
+  .page{padding:12px 12px 80px}
+}
+@media(min-width:768px){
+  :root{--nav-w:100px}
+  .nav-item .nav-icon{font-size:26px}
+  .nav-item .nav-label{font-size:12px}
+  .page{padding:20px 20px 100px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ====== Sidebar ====== -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="baby-avatar">小派</div>
+      <div class="baby-info">15月龄</div>
+    </div>
+    <div class="nav-items" id="navItems">
+      <a class="nav-item active" data-page="today"><span class="nav-icon">🏠</span><span class="nav-label">今日</span></a>
+      <a class="nav-item" data-page="food"><span class="nav-icon">🍽️</span><span class="nav-label">辅食菜单</span></a>
+      <a class="nav-item" data-page="theme"><span class="nav-icon">🎨</span><span class="nav-label">主题周</span></a>
+      <a class="nav-item" data-page="library"><span class="nav-icon">📚</span><span class="nav-label">活动库</span></a>
+      <a class="nav-item" data-page="observe"><span class="nav-icon">📋</span><span class="nav-label">发育观察</span></a>
+      <a class="nav-item" data-page="english"><span class="nav-icon">🎵</span><span class="nav-label">英文启蒙</span></a>
+      <a class="nav-item" data-page="tools"><span class="nav-icon">🧰</span><span class="nav-label">教具清单</span></a>
+      <a class="nav-item" data-page="space"><span class="nav-icon">📐</span><span class="nav-label">空间布置</span></a>
+      <a class="nav-item" data-page="principles"><span class="nav-icon">❤️</span><span class="nav-label">养育原则</span></a>
+    </div>
+  </nav>
+
+  <!-- ====== Content ====== -->
+  <main class="content" id="content">
+    <!-- Page: Today -->
+    <div class="page active" id="page-today">
+      <div class="page-header">
+        <div class="page-title">今日早教工作台</div>
+        <div class="page-date" id="todayDate"></div>
+        <div class="theme-badge" id="todayTheme"></div>
+      </div>
+      <div id="todayModules"></div>
+    </div>
+
+    <!-- Page: Theme Week -->
+    <div class="page" id="page-theme">
+      <div class="page-header">
+        <div class="page-title">每周主题循环</div>
+        <div class="page-date">7大主题自动轮换 · 每周巩固</div>
+      </div>
+      <div id="themeList"></div>
+    </div>
+
+    <!-- Page: Activity Library -->
+    <div class="page" id="page-library">
+      <div class="page-header">
+        <div class="page-title">活动库</div>
+        <div class="page-date">按领域与主题双筛选 · 全部使用真实生活物品</div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">发展领域</div>
+        <div class="filter-chips" id="domainFilter"></div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">主题</div>
+        <div class="filter-chips" id="themeFilter"></div>
+      </div>
+      <div id="activityList"></div>
+    </div>
+
+    <!-- Page: Observe -->
+    <div class="page" id="page-observe">
+      <div class="page-header">
+        <div class="page-title">发育观察记录</div>
+        <div class="page-date" id="observeStage">爬行期 → 扶站期 · 打勾自动保存</div>
+      </div>
+      <div id="observeList"></div>
+      <div class="notice-box">
+        <div class="notice-title">观察说明</div>
+        <div class="notice-text">数据存储在本机，不会上传。每个项目根据月龄变化自动调整，无需手动切换。观察频率建议每周1-2次，不必每天勾选。</div>
+      </div>
+    </div>
+
+    <!-- Page: English -->
+    <div class="page" id="page-english">
+      <div class="page-header">
+        <div class="page-title">英文启蒙</div>
+        <div class="page-date">核心是磨耳朵 · 不教认读 · 不背单词</div>
+      </div>
+      <div id="englishContent"></div>
+    </div>
+
+    <!-- Page: Tools -->
+    <div class="page" id="page-tools">
+      <div class="page-header">
+        <div class="page-title">教具清单</div>
+        <div class="page-date">全部极简低成本 · 优先家居物品和真实食材</div>
+      </div>
+      <div id="toolsContent"></div>
+    </div>
+
+    <!-- Page: Space -->
+    <div class="page" id="page-space">
+      <div class="page-header">
+        <div class="page-title">空间布置</div>
+        <div class="page-date">五大功能区 · 低成本在家实现</div>
+      </div>
+      <div id="spaceContent"></div>
+    </div>
+
+    <!-- Page: Principles -->
+    <div class="page" id="page-principles">
+      <div class="page-header">
+        <div class="page-title">专属养育原则</div>
+        <div class="page-date">固定不变 · 贯穿所有早教活动</div>
+      </div>
+      <div id="principlesContent"></div>
+      <div class="page-header" style="margin-top:20px">
+        <div class="page-title">严格禁止</div>
+      </div>
+      <div class="ban-grid" id="banContent"></div>
+    </div>
+
+    <!-- Page: Food -->
+    <div class="page" id="page-food">
+      <div class="page-header">
+        <div class="page-title">每日辅食菜单</div>
+        <div class="page-date">三顿正餐 · 附前一日购买清单</div>
+      </div>
+      <div id="foodContent"></div>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
