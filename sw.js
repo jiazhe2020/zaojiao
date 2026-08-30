@@ -1,4 +1,4 @@
-const CACHE_NAME = 'xiaopai-edu-v8';
+const CACHE_NAME = 'xiaopai-edu-v9';
 const ASSETS = [
   './',
   './index.html',
