@@ -367,10 +367,12 @@ body{
   border:1px solid var(--border);box-shadow:var(--shadow);
 }
 .dish-card-header{
-  display:flex;align-items:center;gap:10px;
+  display:flex;flex-direction:column;
   padding:10px 12px;cursor:pointer;
 }
 .dish-card-header:active{background:rgba(0,0,0,.02)}
+.dish-header-main{display:flex;align-items:center;gap:10px;min-width:0}
+.dish-header-main .dish-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dish-img{
   width:54px;height:54px;border-radius:10px;
   object-fit:cover;flex-shrink:0;
@@ -382,9 +384,10 @@ body{
   display:flex;align-items:center;justify-content:center;
   font-size:32.5px;
 }
-.dish-info{flex:1;min-width:0}
 .dish-name{font-size:17.5px;font-weight:700;color:var(--text)}
-.dish-ingredients{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.dish-actions-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.dish-actions-row .dish-ingredients{flex:1;min-width:0}
+.dish-ingredients{display:flex;flex-wrap:wrap;gap:4px}
 .ingredient-tag{
   font-size:12.5px;font-weight:600;padding:1px 6px;
   border-radius:4px;background:var(--fine-bg);color:var(--fine);
@@ -482,7 +485,6 @@ body{
 }
 
 /* ====== 换菜按钮 ====== */
-.dish-actions{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
 .swap-btn{
   display:inline-flex;align-items:center;gap:3px;
   padding:4px 10px;border-radius:14px;
