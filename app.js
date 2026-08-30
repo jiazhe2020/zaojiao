@@ -674,12 +674,6 @@ const RECIPE_DB = {
     tip:'富含Omega-3促进大脑发育；煎熟透再给宝宝吃',
     img:null,emoji:'🍣'
   },
-  '猪肝泥':{
-    ingredients:['猪肝30g','姜2片','柠檬少许'],
-    steps:['猪肝切薄片用柠檬水泡15分钟去腥','冷水下锅加姜片煮出血水','捞出洗净重新加水煮30分钟','料理机打成细腻泥状','可分装冷冻'],
-    tip:'猪肝补铁每周1-2次；泡柠檬水去腥效果好',
-    img:null,emoji:'🫘'
-  },
   '小水饺':{
     ingredients:['饺子皮5张','猪肉馅20g','白菜少许'],
     steps:['白菜焯水切碎挤水','与肉馅拌匀','饺子皮切半，包入少量馅','捏紧边缘','水开下饺子，煮浮起再煮2分钟'],
@@ -776,12 +770,6 @@ const RECIPE_DB = {
     tip:'土豆可作为主食；焖软烂方便宝宝咀嚼',
     img:null,emoji:'🥔'
   },
-  '肝泥炒菠菜':{
-    ingredients:['猪肝20g','菠菜3棵','姜1片'],
-    steps:['猪肝切薄片用柠檬水泡15分钟去腥','冷水下锅加姜片煮熟，料理机打成泥','菠菜焯水去草酸切碎','锅中少许油下肝泥炒散','加菠菜碎翻炒均匀'],
-    tip:'补铁黄金搭配；菠菜焯水去草酸不影响钙吸收',
-    img:null,emoji:'🥬'
-  },
   '肉末炒豆角':{
     ingredients:['嫩豆角30g','猪肉馅20g','蒜末少许'],
     steps:['豆角去筋切小丁','焯水2分钟至半熟','锅中少许油炒散肉末','加蒜末和豆角丁翻炒','加少量水焖3分钟至软烂'],
@@ -836,17 +824,101 @@ const RECIPE_DB = {
     tip:'南瓜软糯自带甜味；补β-胡萝卜素',
     img:null,emoji:'🎃'
   },
-  '鸡肝炒菠菜':{
-    ingredients:['鸡肝20g','菠菜3棵','姜1片'],
-    steps:['鸡肝切薄片用柠檬水泡10分钟去腥','冷水加姜片煮熟，切碎','菠菜焯水切碎','锅中少许油下鸡肝碎炒散','加菠菜碎翻炒均匀'],
-    tip:'鸡肝比猪肝更嫩；补铁补维生素A',
-    img:null,emoji:'🥬'
-  },
   '肉末炒莴笋':{
     ingredients:['莴笋30g','猪肉馅20g','蒜末少许'],
     steps:['莴笋去皮切小丁','锅中少许油炒散肉末','加蒜末爆香','下莴笋丁翻炒','加少量水焖2分钟'],
     tip:'莴笋含钾丰富；口感脆嫩宝宝易接受',
     img:null,emoji:'🥬'
+  },
+  '婴儿米粉糊':{
+    ingredients:['婴儿米粉20g','配方奶120ml'],
+    steps:['配方奶加热至40℃左右倒入碗中','米粉缓缓倒入','边倒边顺时针搅拌','静置30秒再搅至无颗粒','呈酸奶状稠度即可'],
+    tip:'15月龄可调稠一些锻炼咀嚼；也可用温水冲调',
+    img:null,emoji:'🍚'
+  },
+  '红枣米糊':{
+    ingredients:['大米20g','红枣2颗'],
+    steps:['红枣洗净去核切小块','大米淘洗浸泡30分钟','加适量水煮至软烂','连汤倒入料理机打成细腻米糊','过筛一遍更顺滑'],
+    tip:'红枣自带甜味无需加糖；去核务必干净',
+    img:null,emoji:'🥣'
+  },
+  '燕麦香蕉米糊':{
+    ingredients:['即食燕麦片15g','香蕉半根','温水150ml'],
+    steps:['温水倒入燕麦片泡3分钟','香蕉用叉子压成泥','香蕉泥拌入泡软的燕麦','搅拌均匀成糊状'],
+    tip:'香蕉选熟透的更甜；温热食用不要烫口',
+    img:null,emoji:'🥣'
+  },
+  '香菇鸡肉粥':{
+    ingredients:['大米30g','鸡胸肉20g','香菇1朵'],
+    steps:['香菇焯水切小丁','鸡胸肉切末用姜水泡去腥','大米加水煮成粥','粥八成熟下香菇丁和鸡肉末','再煮5分钟至肉熟透'],
+    tip:'香菇切细丁易咀嚼；鸡肉末去腥是关键',
+    img:null,emoji:'🍄'
+  },
+  '红薯粥':{
+    ingredients:['大米25g','红薯30g'],
+    steps:['红薯去皮切小丁','大米淘洗加水煮开','下红薯丁小火煮20分钟','煮至红薯软烂用勺压碎','搅拌均匀即可'],
+    tip:'红薯甜糯助通便；腹胀时少量食用',
+    img:null,emoji:'🍠'
+  },
+  '土豆鸡肉饼':{
+    ingredients:['土豆半个','鸡胸肉30g','淀粉5g'],
+    steps:['土豆去皮切薄片蒸15分钟压成泥','鸡胸肉切末','土豆泥加鸡肉末和淀粉拌匀','整成小圆饼','平底锅小火少油，两面各煎3分钟'],
+    tip:'小火慢煎防焦；可多做冷冻保存复煎即食',
+    img:null,emoji:'🥔'
+  },
+  '三文鱼蔬菜饼':{
+    ingredients:['三文鱼30g','胡萝卜10g','面粉15g','鸡蛋半个'],
+    steps:['三文鱼检查无刺压碎','胡萝卜焯水切细末','所有食材加少许水拌匀','平底锅小火摊成小饼','两面煎至金黄'],
+    tip:'三文鱼DHA丰富；务必检查无刺',
+    img:null,emoji:'🐟'
+  },
+  '番茄肉酱软面':{
+    ingredients:['婴儿面条30g','猪肉馅20g','番茄半个'],
+    steps:['番茄去皮切丁','锅中少许油炒散肉馅','加番茄丁炒出汁','加少量水煮成肉酱','下软面条煮3分钟拌匀'],
+    tip:'面条煮软剪短方便咀嚼；肉酱可多做冷冻',
+    img:null,emoji:'🍝'
+  },
+  '番茄龙利鱼':{
+    ingredients:['龙利鱼50g','番茄半个','姜1片'],
+    steps:['龙利鱼切小块用姜水泡10分钟','番茄去皮切丁','锅中少许油炒番茄出汁','下鱼块轻轻翻动','加少量水煮3分钟至鱼熟透'],
+    tip:'龙利鱼无刺好处理；轻翻防止鱼块散碎',
+    img:null,emoji:'🍅'
+  },
+  '牛肉末蒸蛋':{
+    ingredients:['牛肉末20g','鸡蛋1个','温水60ml'],
+    steps:['牛肉末用姜水泡去腥','鸡蛋打散加温水过筛','牛肉末铺碗底倒入蛋液','盖保鲜膜水开蒸10分钟','焖2分钟出锅'],
+    tip:'牛肉补铁；蛋液过筛口感更嫩',
+    img:null,emoji:'🍳'
+  },
+  '肉末炒西葫芦':{
+    ingredients:['西葫芦30g','猪肉馅20g','蒜末少许'],
+    steps:['西葫芦去籽切小丁','锅中少许油炒散肉末','加蒜末爆香','下西葫芦丁翻炒','加少量水焖2分钟'],
+    tip:'西葫芦软嫩易嚼；去籽口感更好',
+    img:null,emoji:'🥒'
+  },
+  '香菇油菜碎':{
+    ingredients:['油菜3棵','香菇1朵','植物油少许'],
+    steps:['油菜洗净焯水','香菇焯水切小丁','锅中少许油下香菇炒香','下油菜碎翻炒','加几滴水焖1分钟'],
+    tip:'油菜补钙；香菇提鲜不用加盐',
+    img:null,emoji:'🥬'
+  },
+  '上汤娃娃菜':{
+    ingredients:['娃娃菜半棵','清水200ml'],
+    steps:['娃娃菜取嫩叶洗净','切成小段','锅中水开下娃娃菜','煮3分钟至软烂','连汤盛出'],
+    tip:'娃娃菜软烂清甜；汤也一起喝',
+    img:null,emoji:'🥬'
+  },
+  '冬瓜肉丸汤':{
+    ingredients:['冬瓜30g','猪肉馅20g','淀粉3g'],
+    steps:['肉馅加淀粉搅上劲','冬瓜去皮切薄片','锅中水温热下小肉丸','煮至肉丸浮起','下冬瓜片煮3分钟'],
+    tip:'温水下丸不散；冬瓜煮至透明即熟',
+    img:null,emoji:'🍲'
+  },
+  '番茄豆腐汤':{
+    ingredients:['番茄半个','嫩豆腐40g','淀粉少许'],
+    steps:['番茄去皮切丁','豆腐切小丁','锅中少许油炒番茄出汁','加水烧开下豆腐丁','煮2分钟水淀粉勾薄芡'],
+    tip:'豆腐焯水去豆腥；酸甜开胃',
+    img:null,emoji:'🍅'
   }
 };
 
@@ -854,70 +926,64 @@ const FOOD_MENU = [
   {day:'周一',meals:[
     {type:'早餐',dishes:['山药小米粥','鸡蛋羹','圣女果几颗']},
     {type:'加餐',dishes:['苹果块']},
-    {type:'午餐',dishes:['软米饭','番茄炒鸡蛋','碎肉炒西兰花','冬瓜汤']},
+    {type:'午餐',dishes:['软米饭','番茄炒鸡蛋','碎肉炒西兰花','冬瓜肉丸汤']},
     {type:'加餐',dishes:['无糖酸奶']},
     {type:'晚餐',dishes:['软米饭','鸡丁炒黄瓜','炒小白菜']}
-  ],nutrition:'今日炒菜3道。补铁：鸡蛋+西兰花。绿叶菜：小白菜。主食含杂粮：小米。',
-   shopping:'山药、小米、鸡蛋、圣女果、苹果、大米、番茄、西兰花、猪肉馅、冬瓜、鸡胸肉、黄瓜、小白菜、无糖酸奶'},
+  ],nutrition:'今日炒菜3道。补铁：鸡蛋+西兰花。绿叶菜：小白菜。主食含杂粮：小米。'},
   {day:'周二',meals:[
     {type:'早餐',dishes:['南瓜发糕','牛奶','蓝莓']},
     {type:'加餐',dishes:['香蕉块']},
     {type:'午餐',dishes:['杂粮软饭','西兰花炒虾仁','肉末蒸豆腐','菠菜碎']},
     {type:'加餐',dishes:['蒸南瓜块']},
     {type:'晚餐',dishes:['软米饭','肉末炒茄子','炒卷心菜碎']}
-  ],nutrition:'今日炒菜3道。补钙：虾仁+豆腐。补脑：虾仁。绿叶菜：菠菜+卷心菜。',
-   shopping:'南瓜、面粉、牛奶、蓝莓、香蕉、大米、小米、西兰花、鲜虾、嫩豆腐、菠菜、茄子、猪肉馅、卷心菜'},
+  ],nutrition:'今日炒菜3道。补钙：虾仁+豆腐。补脑：虾仁。绿叶菜：菠菜+卷心菜。'},
   {day:'周三',meals:[
     {type:'早餐',dishes:['燕麦粥','香蕉松饼','煮鸡蛋']},
     {type:'加餐',dishes:['梨块']},
     {type:'午餐',dishes:['软饭','番茄鸡肉碎','碎肉炒土豆','炒油麦菜碎']},
     {type:'加餐',dishes:['无糖酸奶']},
-    {type:'晚餐',dishes:['软米饭','鸡蛋炒虾仁','炒小白菜']}
-  ],nutrition:'今日炒菜4道。补蛋白：鸡蛋+鸡肉+虾仁。膳食纤维：土豆+油麦菜。绿叶菜：油麦菜+小白菜。',
-   shopping:'燕麦、牛奶、香蕉、鸡蛋、面粉、梨、大米、鸡胸肉、番茄、洋葱、土豆、猪肉馅、油麦菜、鲜虾、小白菜、无糖酸奶'},
+    {type:'晚餐',dishes:['软米饭','鸡蛋炒虾仁','香菇油菜碎']}
+  ],nutrition:'今日炒菜4道。补蛋白：鸡蛋+鸡肉+虾仁。膳食纤维：土豆+油麦菜。绿叶菜：油麦菜+油菜。'},
   {day:'周四',meals:[
     {type:'早餐',dishes:['蔬菜鸡蛋饼','豆浆','苹果块']},
     {type:'加餐',dishes:['橙子瓣']},
     {type:'午餐',dishes:['软米饭','碎肉炒南瓜','鸡丝炒胡萝卜','炒卷心菜碎']},
     {type:'加餐',dishes:['蒸红薯块']},
     {type:'晚餐',dishes:['软米饭','肉末炒冬瓜','蒜蓉西兰花']}
-  ],nutrition:'今日炒菜5道。补铁：胡萝卜维A。补维C：橙子+西兰花。绿叶菜：卷心菜+西兰花。',
-   shopping:'面粉、鸡蛋、胡萝卜、西兰花、黄豆、苹果、橙子、大米、南瓜、猪肉馅、鸡胸肉、卷心菜、冬瓜、红薯'},
+  ],nutrition:'今日炒菜5道。补铁：胡萝卜维A。补维C：橙子+西兰花。绿叶菜：卷心菜+西兰花。'},
   {day:'周五',meals:[
-    {type:'早餐',dishes:['紫薯馒头','牛奶','草莓']},
+    {type:'早餐',dishes:['红枣米糊','鸡蛋羹','草莓']},
     {type:'加餐',dishes:['猕猴桃块']},
-    {type:'午餐',dishes:['软米饭','肝泥炒菠菜','番茄炒鸡蛋','碎肉炒莴笋']},
+    {type:'午餐',dishes:['软米饭','炖牛肉胡萝卜','番茄炒鸡蛋','碎肉炒莴笋']},
     {type:'加餐',dishes:['无糖酸奶']},
     {type:'晚餐',dishes:['软米饭','肉末炒木耳','炒小白菜']}
-  ],nutrition:'今日炒菜5道。补铁重点：猪肝+木耳（每周1次肝类）。维C：猕猴桃促铁吸收。绿叶菜：菠菜+小白菜。',
-   shopping:'紫薯、面粉、牛奶、草莓、猕猴桃、大米、猪肝、菠菜、番茄、鸡蛋、莴笋、猪肉馅、干木耳、胡萝卜、小白菜、无糖酸奶'},
+  ],nutrition:'今日炒菜5道。补铁：炖牛肉+木耳（红肉补铁）。维C：猕猴桃促铁吸收。绿叶菜：小白菜。'},
   {day:'周六',meals:[
     {type:'早餐',dishes:['玉米粥','鸡蛋卷','小番茄']},
     {type:'加餐',dishes:['火龙果块']},
-    {type:'午餐',dishes:['什锦炒饭','鸡蛋炒虾仁','炒油麦菜碎','萝卜汤']},
+    {type:'午餐',dishes:['什锦炒饭','鸡蛋炒虾仁','炒油麦菜碎','番茄豆腐汤']},
     {type:'加餐',dishes:['无糖酸奶']},
     {type:'晚餐',dishes:['软米饭','肉末炒丝瓜','碎肉炒西兰花']}
-  ],nutrition:'今日炒菜5道。补钙：虾仁+奶。膳食纤维：油麦菜+丝瓜。绿叶菜：油麦菜+西兰花。',
-   shopping:'玉米糁、鸡蛋、牛奶、小番茄、火龙果、大米、胡萝卜、豌豆、猪瘦肉、鲜虾、油麦菜、白萝卜、丝瓜、猪肉馅、西兰花、无糖酸奶'},
+  ],nutrition:'今日炒菜5道。补钙：虾仁+豆腐+奶。膳食纤维：油麦菜+丝瓜。绿叶菜：油麦菜+西兰花。'},
   {day:'周日',meals:[
-    {type:'早餐',dishes:['全麦面包','牛奶','苹果泥']},
+    {type:'早餐',dishes:['婴儿米粉糊','牛奶','苹果泥']},
     {type:'加餐',dishes:['香蕉半根']},
     {type:'午餐',dishes:['什锦炒饭','清蒸鲈鱼','肉末炒豆角','番茄汤']},
     {type:'加餐',dishes:['无糖酸奶']},
     {type:'晚餐',dishes:['软米饭','番茄炒鸡蛋','鸡丁炒黄瓜']}
-  ],nutrition:'今日炒菜4道。均衡日：鱼+蛋+肉+蔬菜+杂粮。补脑：鲈鱼DHA。绿叶菜：炒饭豌豆+豆角。',
-   shopping:'全麦面包、牛奶、苹果、香蕉、大米、鸡蛋、胡萝卜、豌豆、猪瘦肉、鲈鱼、嫩豆角、猪肉馅、番茄、鸡胸肉、黄瓜、无糖酸奶'}
+  ],nutrition:'今日炒菜4道。均衡日：鱼+蛋+肉+蔬菜+杂粮。补脑：鲈鱼DHA。绿叶菜：炒饭豌豆+豆角。'}
 ];
 
 /* ====== 换菜池（15月龄适用，按类别轮换） ====== */
 const FOOD_SWAP_POOL = {
-  '主食':['软米饭','杂粮软饭','软饭','什锦炒饭','南瓜小米粥','山药小米粥','蔬菜瘦肉粥','燕麦粥','玉米粥','青菜鸡丝面','小馄饨','小水饺','番茄鸡蛋面疙瘩','南瓜发糕','紫薯馒头','全麦面包','香蕉松饼','蔬菜鸡蛋饼'],
-  '荤蛋菜':['番茄炒鸡蛋','番茄牛肉末','炖牛肉胡萝卜','鸡肉丸子','鱼肉丸子','番茄鸡肉碎','碎肉炒南瓜','碎肉炒土豆','碎肉炒西兰花','肉末蒸豆腐','番茄肉末豆腐','肉末炒茄子','肉末炒冬瓜','肉末炒丝瓜','肉末炒木耳','肉末炒豆角','肉末炒莴笋','鸡丁炒黄瓜','鸡丝炒胡萝卜','肝泥炒菠菜','鸡肝炒菠菜','猪肝泥','清蒸鳕鱼','清蒸鲈鱼','三文鱼','鸡蛋炒虾仁','虾仁蒸蛋','西兰花炒虾仁','鸡蛋羹','鸡蛋卷','煮鸡蛋'],
-  '蔬菜':['蒜蓉西兰花','炒小白菜','菠菜碎','炒卷心菜碎','炒油麦菜碎','芦笋碎','南瓜泥','胡萝卜泥'],
-  '汤':['番茄汤','萝卜汤','紫菜蛋花汤','豆腐羹'],
+  '主食':['软米饭','杂粮软饭','软饭','什锦炒饭','南瓜小米粥','山药小米粥','蔬菜瘦肉粥','燕麦粥','玉米粥','青菜鸡丝面','小馄饨','小水饺','番茄鸡蛋面疙瘩','南瓜发糕','紫薯馒头','全麦面包','香蕉松饼','蔬菜鸡蛋饼','婴儿米粉糊','红枣米糊','燕麦香蕉米糊','香菇鸡肉粥','红薯粥','土豆鸡肉饼','三文鱼蔬菜饼','番茄肉酱软面'],
+  '荤蛋菜':['番茄炒鸡蛋','番茄牛肉末','炖牛肉胡萝卜','鸡肉丸子','鱼肉丸子','番茄鸡肉碎','碎肉炒南瓜','碎肉炒土豆','碎肉炒西兰花','肉末蒸豆腐','番茄肉末豆腐','肉末炒茄子','肉末炒冬瓜','肉末炒丝瓜','肉末炒木耳','肉末炒豆角','肉末炒莴笋','鸡丁炒黄瓜','鸡丝炒胡萝卜','清蒸鳕鱼','清蒸鲈鱼','三文鱼','番茄龙利鱼','鸡蛋炒虾仁','虾仁蒸蛋','西兰花炒虾仁','鸡蛋羹','鸡蛋卷','牛肉末蒸蛋','肉末炒西葫芦','煮鸡蛋'],
+  '蔬菜':['蒜蓉西兰花','炒小白菜','菠菜碎','炒卷心菜碎','炒油麦菜碎','芦笋碎','南瓜泥','胡萝卜泥','香菇油菜碎','上汤娃娃菜'],
+  '汤':['番茄汤','萝卜汤','紫菜蛋花汤','豆腐羹','冬瓜汤','冬瓜肉丸汤','番茄豆腐汤'],
   '水果点心':['苹果块','香蕉块','梨块','橙子瓣','猕猴桃块','火龙果块','草莓','蓝莓','小番茄','蒸南瓜块','蒸红薯块','苹果泥','香蕉半根','圣女果几颗'],
   '奶类':['牛奶','无糖酸奶','豆浆']
 };
+var FOOD_CAT_NAMES={'主食':'🍚 主食','荤蛋菜':'🍗 荤蛋菜','蔬菜':'🥬 蔬菜','汤':'🍲 汤羹','水果点心':'🍓 水果加餐','奶类':'🥛 奶类'};
 var DISH_CAT={};
 Object.keys(FOOD_SWAP_POOL).forEach(function(cat){
   FOOD_SWAP_POOL[cat].forEach(function(d){DISH_CAT[d]=cat;});
@@ -1304,6 +1370,76 @@ function swapDish(key){
   renderFood();
 }
 
+/* ====== 营养说明与采购清单自动生成 ====== */
+function getTodayMeals(){
+  var d=new Date();
+  var dow=(d.getDay()+6)%7;
+  var swaps=getFoodSwaps();
+  return FOOD_MENU[dow].meals.map(function(m,mi){
+    return {type:m.type,dishes:m.dishes.map(function(dd,di){return swaps[mi+'-'+di]||dd;})};
+  });
+}
+function uniqArr(a){
+  var o={},r=[];
+  a.forEach(function(x){if(!o[x]){o[x]=1;r.push(x);}});
+  return r;
+}
+function genNutritionText(meals){
+  var dishes=[];
+  meals.forEach(function(m){m.dishes.forEach(function(d){dishes.push(d);});});
+  var iron=[],dha=[],calc=[],egg=[],greens=[],grain=[];
+  dishes.forEach(function(d){
+    if(/牛肉|牛里脊|猪瘦肉|猪肉馅|瘦肉末|肉末|碎肉|木耳|红枣/.test(d))iron.push(d);
+    if(/鳕鱼|鲈鱼|三文鱼|龙利鱼|鱼肉丸/.test(d))dha.push(d);
+    if(/虾|豆腐|牛奶|酸奶/.test(d))calc.push(d);
+    if(/蛋/.test(d))egg.push(d);
+    if(/小白菜|菠菜|卷心菜|油麦菜|油菜|青菜|西兰花|娃娃菜/.test(d))greens.push(d);
+    if(/杂粮|小米|燕麦|玉米|紫薯|红薯|全麦|米糊|山药|土豆/.test(d))grain.push(d);
+  });
+  var cnt={};
+  dishes.forEach(function(d){var c=DISH_CAT[d]||'其他';cnt[c]=(cnt[c]||0)+1;});
+  var seg=[];
+  ['主食','荤蛋菜','蔬菜','汤','水果点心','奶类'].forEach(function(k){if(cnt[k])seg.push(k+cnt[k]+'道');});
+  var out='今日共'+dishes.length+'道菜（'+seg.join('、')+'）。';
+  if(iron.length)out+='补铁：'+uniqArr(iron).slice(0,2).join('、')+'，搭配维C水果促吸收。';
+  if(dha.length)out+='补脑DHA：'+uniqArr(dha).slice(0,2).join('、')+'。';
+  if(calc.length)out+='补钙：'+uniqArr(calc).slice(0,2).join('、')+'。';
+  if(egg.length)out+='蛋类共'+egg.length+'次。';
+  if(greens.length)out+='绿叶菜：'+uniqArr(greens).slice(0,3).join('、')+'。';
+  if(grain.length)out+='粗粮薯类：'+uniqArr(grain).slice(0,2).join('、')+'。';
+  return out;
+}
+var SHOP_SKIP={'清水':1,'温水':1,'热水':1,'凉白开':1,'植物油':1,'橄榄油':1,'香油':1,'酱油':1,'蒸鱼豉油':1,'盐':1,'淀粉':1,'水淀粉':1,'蛋清':1,'柠檬':1,'姜':1,'葱':1,'蒜':1,'蒜末':1,'葱花':1,'姜片':1,'食用油':1};
+var SHOP_MAP={'嫩豆腐':'豆腐','牛里脊':'牛肉','猪瘦肉':'猪肉','鸡胸肉':'鸡肉','猪肉馅':'猪肉','牛肉末':'牛肉','瘦肉末':'猪肉','即食燕麦片':'燕麦片','软米饭':'大米','婴儿面条':'宝宝面条','干木耳':'木耳'};
+var SIMPLE_SHOP={'软米饭':['大米'],'软饭':['大米'],'杂粮软饭':['大米','小米'],'牛奶':['牛奶'],'豆浆':['黄豆'],'无糖酸奶':['无糖酸奶'],'南瓜发糕':['面粉','南瓜'],'紫薯馒头':['面粉','紫薯'],'全麦面包':['全麦面包'],'苹果块':['苹果'],'苹果泥':['苹果'],'香蕉块':['香蕉'],'香蕉半根':['香蕉'],'梨块':['梨'],'橙子瓣':['橙子'],'猕猴桃块':['猕猴桃'],'火龙果块':['火龙果'],'小番茄':['小番茄'],'圣女果几颗':['圣女果'],'草莓':['草莓'],'蓝莓':['蓝莓'],'蒸南瓜块':['南瓜'],'蒸红薯块':['红薯'],'煮鸡蛋':['鸡蛋'],'冬瓜汤':['冬瓜']};
+function getShopItems(dish){
+  var r=RECIPE_DB[dish];
+  if(r){
+    var out=[];
+    r.ingredients.forEach(function(ing){
+      ing.split('/').forEach(function(part){
+        var s=part.replace(/[\d.]+\s*(g|ml|克|片|朵|棵|颗|根|个|张|只|勺|瓣)?/gi,'');
+        s=s.replace(/半个|半根|几颗|少许|适量|数滴/g,'').trim();
+        if(SHOP_MAP[s])s=SHOP_MAP[s];
+        if(s&&!SHOP_SKIP[s])out.push(s);
+      });
+    });
+    return out;
+  }
+  return SIMPLE_SHOP[dish]||[dish];
+}
+function genShoppingText(meals){
+  var seen={},items=[];
+  meals.forEach(function(m){
+    m.dishes.forEach(function(d){
+      getShopItems(d).forEach(function(it){
+        if(!seen[it]){seen[it]=1;items.push(it);}
+      });
+    });
+  });
+  return items.join('、');
+}
+
 /* ====== 辅食食谱卡片渲染 ====== */
 function renderDishCard(dishName,swapKey){
   var swapHtml=swapKey?'<button class="swap-btn" data-swap="'+swapKey+'">🔄 换</button>':'';
@@ -1323,11 +1459,13 @@ function renderDishCard(dishName,swapKey){
   });
   return '<div class="dish-card collapsed">'+
     '<div class="dish-card-header" data-toggle>'+
+    '<div class="dish-header-main">'+
     (imgHtml||placeholderHtml)+
-    '<div class="dish-info"><div class="dish-name">'+dishName+'</div>'+
-    '<div class="dish-ingredients">'+ingHtml+'</div></div>'+
-    '<div class="dish-actions">'+swapHtml+
-    '<span class="dish-toggle">查看做法 ▼</span></div></div>'+
+    '<div class="dish-name">'+dishName+'</div>'+
+    '<span class="dish-toggle">做法 ▼</span></div>'+
+    '<div class="dish-actions-row">'+
+    '<div class="dish-ingredients">'+ingHtml+'</div>'+swapHtml+
+    '</div></div>'+
     '<div class="dish-card-body">'+
     '<div class="recipe-steps">'+stepsHtml+'</div>'+
     '<div class="recipe-tip">💡 '+r.tip+'</div>'+
@@ -1354,45 +1492,34 @@ function renderMealCard(meal,mealIdx){
 function renderFood(){
   var d=new Date();
   var dow=(d.getDay()+6)%7;
-  var todayMenu=FOOD_MENU[dow];
-  var yMenu=FOOD_MENU[(dow-1+7)%7];
   var wd=['周一','周二','周三','周四','周五','周六','周日'];
-  var h='<div class="food-day"><div class="food-day-header">📅 今日菜单 · '+wd[dow]+'</div>';
-  if(todayMenu.nutrition){
-    h+='<div class="nutrition-box"><div class="nutrition-title">🧬 今日营养说明</div><div class="nutrition-text">'+todayMenu.nutrition+'</div></div>';
-  }
   var swaps=getFoodSwaps();
+  var todayMeals=getTodayMeals();
+  var h='<div class="food-day"><div class="food-day-header">📅 今日菜单 · '+wd[dow]+'</div>';
+  h+='<div class="nutrition-box"><div class="nutrition-title">🧬 今日营养说明</div><div class="nutrition-text">'+genNutritionText(todayMeals)+'</div></div>';
   if(Object.keys(swaps).length){
-    h+='<div class="notice-box" style="margin:10px 0 0"><div class="notice-title">🔄 换菜提醒</div><div class="notice-text">今日菜单包含你更换过的菜品，营养说明与采购清单仍按原菜单。不满意就再点一次"换"。</div></div>';
+    h+='<div class="notice-box" style="margin:10px 0 0"><div class="notice-title">🔄 换菜提醒</div><div class="notice-text">今日菜单包含你更换过的菜品，营养说明已按当前菜单自动更新。不满意就再点一次"换"。</div></div>';
   }
-  var todayMeals=todayMenu.meals.map(function(m){return{type:m.type,dishes:m.dishes.slice()};});
-  todayMeals.forEach(function(m,mi){
-    m.dishes.forEach(function(dd,di){
-      var sw=swaps[mi+'-'+di];
-      if(sw)m.dishes[di]=sw;
-    });
-  });
   todayMeals.forEach(function(m,mi){
     h+=renderMealCard(m,mi);
   });
   h+='</div>';
-  h+='<div class="food-shopping"><div class="food-shopping-title">🛒 今日采购清单（为明天准备）</div>'+
-    '<div class="food-shopping-list">'+yMenu.shopping+'</div></div>';
+  var tm=FOOD_MENU[(dow+1)%7];
+  h+='<div class="food-shopping"><div class="food-shopping-title">🛒 今日采购清单（按明天'+tm.day+'默认菜单）</div>'+
+    '<div class="food-shopping-list">'+genShoppingText(tm.meals)+'</div></div>';
   h+='<div class="notice-box" style="margin-top:12px"><div class="notice-title">🍼 每日奶量提醒</div>'+
     '<div class="notice-text">每日奶量需保证400-600ml（母乳/配方奶/牛奶均可），可安排在早起、上午加餐、午睡后和睡前。维生素D每日补充600IU，配合15分钟户外日晒促进钙吸收。</div></div>';
+  var totalRecipes=Object.keys(RECIPE_DB).length;
   h+='<div style="margin-top:16px"><div class="page-title" style="font-size:20px;margin-bottom:10px">📋 辅食食谱大全</div>'+
     '<div class="notice-box" style="margin:0 0 12px"><div class="notice-title">点击任意菜品查看制作方法</div>'+
-    '<div class="notice-text">以下收录本周所有辅食的详细做法，含食材用量、分步图解和小贴士。配图菜品有实拍参考，其余用图标标注。</div></div>';
-  var rendered={};
-  FOOD_MENU.forEach(function(day){
-    day.meals.forEach(function(m){
-      m.dishes.forEach(function(dish){
-        if(RECIPE_DB[dish]&&!rendered[dish]){
-          rendered[dish]=true;
-          h+=renderDishCard(dish);
-        }
-      });
+    '<div class="notice-text">全部'+totalRecipes+'道辅食按类别分组，含食材用量、分步做法和小贴士。点"换"换出来的菜也都在这里。</div></div>';
+  Object.keys(FOOD_SWAP_POOL).forEach(function(cat){
+    var dishes=FOOD_SWAP_POOL[cat].filter(function(dish){return RECIPE_DB[dish];});
+    h+='<div class="meal-card"><div class="meal-header">'+FOOD_CAT_NAMES[cat]+'（'+dishes.length+'道）</div>';
+    dishes.forEach(function(dish){
+      h+=renderDishCard(dish);
     });
+    h+='</div>';
   });
   h+='</div>';
   h+='<div style="margin-top:16px"><div class="page-title" style="font-size:20px;margin-bottom:10px">🗓️ 本周完整菜单</div>';
@@ -1421,13 +1548,13 @@ function renderFood(){
     '• 奶类 400-600ml<br>'+
     '• 植物油 10-15g<br><br>'+
     '<b>关键营养素：</b><br>'+
-    '• 铁 7mg/天：每周1-2次动物肝脏，搭配维C果蔬促吸收<br>'+
+    '• 铁 7mg/天：每天安排红肉（牛/猪肉），搭配维C果蔬促吸收<br>'+
     '• 钙 600mg/天：奶+豆腐+绿叶菜<br>'+
     '• 维D 600IU/天：每日补充剂+日晒<br>'+
     '• 蛋白质 25g/天：蛋+肉+豆制品<br><br>'+
     '<b>餐次安排：</b>三餐两点（上午10点、下午3点加餐）<br>'+
     '<b>调味规则：</b>少盐少糖，每日钠≤700mg，禁成人餐<br>'+
-    '<b>食材原则：</b>软烂易嚼、食材新鲜、每周鱼虾2-3次<br>'+
+    '<b>食材原则：</b>软烂易嚼、食材新鲜、每周鱼虾2-3次、不用内脏食材<br>'+
     '<b>手指食物：</b>鼓励自主进食，食材大小以防噎为准</div></div>';
   document.getElementById('foodContent').innerHTML=h;
 }
