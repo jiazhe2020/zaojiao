@@ -909,6 +909,20 @@ const FOOD_MENU = [
    shopping:'全麦面包、牛奶、苹果、香蕉、大米、鸡蛋、胡萝卜、豌豆、猪瘦肉、鲈鱼、嫩豆角、猪肉馅、番茄、鸡胸肉、黄瓜、无糖酸奶'}
 ];
 
+/* ====== 换菜池（15月龄适用，按类别轮换） ====== */
+const FOOD_SWAP_POOL = {
+  '主食':['软米饭','杂粮软饭','软饭','什锦炒饭','南瓜小米粥','山药小米粥','蔬菜瘦肉粥','燕麦粥','玉米粥','青菜鸡丝面','小馄饨','小水饺','番茄鸡蛋面疙瘩','南瓜发糕','紫薯馒头','全麦面包','香蕉松饼','蔬菜鸡蛋饼'],
+  '荤蛋菜':['番茄炒鸡蛋','番茄牛肉末','炖牛肉胡萝卜','鸡肉丸子','鱼肉丸子','番茄鸡肉碎','碎肉炒南瓜','碎肉炒土豆','碎肉炒西兰花','肉末蒸豆腐','番茄肉末豆腐','肉末炒茄子','肉末炒冬瓜','肉末炒丝瓜','肉末炒木耳','肉末炒豆角','肉末炒莴笋','鸡丁炒黄瓜','鸡丝炒胡萝卜','肝泥炒菠菜','鸡肝炒菠菜','猪肝泥','清蒸鳕鱼','清蒸鲈鱼','三文鱼','鸡蛋炒虾仁','虾仁蒸蛋','西兰花炒虾仁','鸡蛋羹','鸡蛋卷','煮鸡蛋'],
+  '蔬菜':['蒜蓉西兰花','炒小白菜','菠菜碎','炒卷心菜碎','炒油麦菜碎','芦笋碎','南瓜泥','胡萝卜泥'],
+  '汤':['番茄汤','萝卜汤','紫菜蛋花汤','豆腐羹'],
+  '水果点心':['苹果块','香蕉块','梨块','橙子瓣','猕猴桃块','火龙果块','草莓','蓝莓','小番茄','蒸南瓜块','蒸红薯块','苹果泥','香蕉半根','圣女果几颗'],
+  '奶类':['牛奶','无糖酸奶','豆浆']
+};
+var DISH_CAT={};
+Object.keys(FOOD_SWAP_POOL).forEach(function(cat){
+  FOOD_SWAP_POOL[cat].forEach(function(d){DISH_CAT[d]=cat;});
+});
+
 /* ====== 工具函数 ====== */
 function getDayKey(){
   var d=new Date();
@@ -1070,7 +1084,7 @@ function renderThemeWeek(){
   THEMES.forEach(function(t,i){
     html+='<div class="theme-week-card'+(i===curIdx?' current':'')+'">'+
       '<div class="theme-week-header">'+
-      '<span style="font-size:22px">'+t.icon+'</span>'+
+      '<span style="font-size:27.5px">'+t.icon+'</span>'+
       '<span class="theme-week-name">'+t.name+'</span>'+
       (i===curIdx?'<span class="theme-week-badge">本周</span>':'')+
       '</div><div class="theme-week-desc">'+t.desc+'</div></div>';
@@ -1143,14 +1157,14 @@ function renderEnglish(){
   h+='<div class="eng-section"><div class="eng-section-title">📦 日常单词</div>';
   h+='<div class="tool-list">';
   ENG_DATA.words.forEach(function(w){
-    h+='<div class="eng-card" style="margin:0"><div class="eng-row"><div><div class="eng-word" style="font-size:14px">'+w.en+
+    h+='<div class="eng-card" style="margin:0"><div class="eng-row"><div><div class="eng-word" style="font-size:17.5px">'+w.en+
       '</div><div class="eng-meaning">'+w.cn+'</div></div>'+
-      '<button class="play-btn" data-speak="'+escapeAttr(w.en)+'" data-lang="en-US" style="padding:4px 8px;font-size:11px">▶</button></div></div>';
+      '<button class="play-btn" data-speak="'+escapeAttr(w.en)+'" data-lang="en-US" style="padding:4px 8px;font-size:13.75px">▶</button></div></div>';
   });
   h+='</div></div>';
   h+='<div class="eng-section"><div class="eng-section-title">💬 超短句</div>';
   ENG_DATA.phrases.forEach(function(p){
-    h+='<div class="eng-card"><div class="eng-row"><div><div class="eng-word" style="font-size:15px">'+p.en+
+    h+='<div class="eng-card"><div class="eng-row"><div><div class="eng-word" style="font-size:18.75px">'+p.en+
       '</div><div class="eng-meaning">'+p.cn+'</div></div>'+
       '<button class="play-btn" data-speak="'+escapeAttr(p.en)+'" data-lang="en-US"><span class="play-icon">▶</span>播放</button></div></div>';
   });
@@ -1194,7 +1208,7 @@ function renderTools(){
   var h='';
   sections.forEach(function(s){
     h+='<div class="tool-section"><div class="tool-section-title">'+s.title+
-      '<span style="font-size:11px;color:var(--text3);font-weight:400;margin-left:6px">'+s.desc+'</span></div>'+
+      '<span style="font-size:13.75px;color:var(--text3);font-weight:400;margin-left:6px">'+s.desc+'</span></div>'+
       '<div class="tool-list">';
     TOOLS[s.key].forEach(function(t){
       h+='<div class="tool-item"><div class="tool-name">'+t.name+'</div><div class="tool-desc">'+t.desc+'</div></div>';
@@ -1210,7 +1224,7 @@ function renderTools(){
 function renderSpace(){
   var h='<div class="space-grid">';
   SPACES.forEach(function(s){
-    h+='<div class="space-card"><div class="space-card-header"><span style="font-size:20px">'+s.icon+
+    h+='<div class="space-card"><div class="space-card-header"><span style="font-size:25px">'+s.icon+
       '</span>'+s.name+'</div><div class="space-card-body">'+
       '<p style="font-weight:600;color:var(--text);margin-bottom:4px">布置物品：</p>';
     s.items.forEach(function(it){h+='<p>• '+it+'</p>';});
@@ -1240,11 +1254,62 @@ function renderPrinciples(){
   document.getElementById('banContent').innerHTML=bh;
 }
 
+/* ====== 换菜逻辑 ====== */
+function getFoodSwaps(){
+  try{
+    var s=JSON.parse(localStorage.getItem('xp_food_swap')||'null');
+    if(s&&s.date===getDayKey())return s.swaps||{};
+  }catch(e){}
+  return {};
+}
+function setFoodSwap(mi,di,name){
+  var swaps=getFoodSwaps();
+  swaps[mi+'-'+di]=name;
+  try{
+    localStorage.setItem('xp_food_swap',JSON.stringify({date:getDayKey(),swaps:swaps}));
+  }catch(e){}
+}
+function getSwapPool(dish,mealType){
+  var cat=DISH_CAT[dish];
+  if(!cat){
+    if(mealType==='早餐')cat='主食';
+    else if(mealType==='加餐')cat='水果点心';
+    else cat='荤蛋菜';
+  }
+  return FOOD_SWAP_POOL[cat];
+}
+function swapDish(key){
+  var parts=key.split('-');
+  var mi=parseInt(parts[0],10),di=parseInt(parts[1],10);
+  var d=new Date();
+  var dow=(d.getDay()+6)%7;
+  var todayMenu=FOOD_MENU[dow];
+  var meal=todayMenu.meals[mi];
+  if(!meal||!meal.dishes[di])return;
+  var swaps=getFoodSwaps();
+  var current=swaps[key]||meal.dishes[di];
+  var used={};
+  todayMenu.meals.forEach(function(m,idx){
+    m.dishes.forEach(function(dd,j){
+      var nm=swaps[idx+'-'+j]||dd;
+      used[nm]=true;
+    });
+  });
+  var pool=getSwapPool(current,meal.type);
+  var cands=pool.filter(function(p){return p!==current&&!used[p];});
+  if(!cands.length)cands=pool.filter(function(p){return p!==current;});
+  if(!cands.length)return;
+  var next=cands[Math.floor(Math.random()*cands.length)];
+  setFoodSwap(mi,di,next);
+  renderFood();
+}
+
 /* ====== 辅食食谱卡片渲染 ====== */
-function renderDishCard(dishName){
+function renderDishCard(dishName,swapKey){
+  var swapHtml=swapKey?'<button class="swap-btn" data-swap="'+swapKey+'">🔄 换</button>':'';
   var r=RECIPE_DB[dishName];
   if(!r){
-    return '<div class="dish-simple"><span class="dish-emoji">🍽️</span><span class="dish-name-simple">'+dishName+'</span></div>';
+    return '<div class="dish-simple"><span class="dish-emoji">🍽️</span><span class="dish-name-simple">'+dishName+'</span>'+swapHtml+'</div>';
   }
   var imgHtml=r.img?'<img class="dish-img" src="'+r.img+'" alt="'+dishName+'" onerror="this.style.display=\'none\'">':'';
   var placeholderHtml=!r.img?'<div class="dish-img-placeholder">'+r.emoji+'</div>':'';
@@ -1261,7 +1326,8 @@ function renderDishCard(dishName){
     (imgHtml||placeholderHtml)+
     '<div class="dish-info"><div class="dish-name">'+dishName+'</div>'+
     '<div class="dish-ingredients">'+ingHtml+'</div></div>'+
-    '<span class="dish-toggle">查看做法 ▼</span></div>'+
+    '<div class="dish-actions">'+swapHtml+
+    '<span class="dish-toggle">查看做法 ▼</span></div></div>'+
     '<div class="dish-card-body">'+
     '<div class="recipe-steps">'+stepsHtml+'</div>'+
     '<div class="recipe-tip">💡 '+r.tip+'</div>'+
@@ -1273,12 +1339,12 @@ function getMealTime(type){
   };
   return times[type]||'';
 }
-function renderMealCard(meal){
+function renderMealCard(meal,mealIdx){
   var t=getMealTime(meal.type);
   var timeHtml=t?'<span class="meal-time">🕐 '+t+'</span>':'';
   var h='<div class="meal-card"><div class="meal-header">'+meal.type+timeHtml+'</div>';
-  meal.dishes.forEach(function(d){
-    h+=renderDishCard(d);
+  meal.dishes.forEach(function(d,di){
+    h+=renderDishCard(d,mealIdx!==undefined?mealIdx+'-'+di:null);
   });
   h+='</div>';
   return h;
@@ -1295,15 +1361,26 @@ function renderFood(){
   if(todayMenu.nutrition){
     h+='<div class="nutrition-box"><div class="nutrition-title">🧬 今日营养说明</div><div class="nutrition-text">'+todayMenu.nutrition+'</div></div>';
   }
-  todayMenu.meals.forEach(function(m){
-    h+=renderMealCard(m);
+  var swaps=getFoodSwaps();
+  if(Object.keys(swaps).length){
+    h+='<div class="notice-box" style="margin:10px 0 0"><div class="notice-title">🔄 换菜提醒</div><div class="notice-text">今日菜单包含你更换过的菜品，营养说明与采购清单仍按原菜单。不满意就再点一次"换"。</div></div>';
+  }
+  var todayMeals=todayMenu.meals.map(function(m){return{type:m.type,dishes:m.dishes.slice()};});
+  todayMeals.forEach(function(m,mi){
+    m.dishes.forEach(function(dd,di){
+      var sw=swaps[mi+'-'+di];
+      if(sw)m.dishes[di]=sw;
+    });
+  });
+  todayMeals.forEach(function(m,mi){
+    h+=renderMealCard(m,mi);
   });
   h+='</div>';
   h+='<div class="food-shopping"><div class="food-shopping-title">🛒 今日采购清单（为明天准备）</div>'+
     '<div class="food-shopping-list">'+yMenu.shopping+'</div></div>';
   h+='<div class="notice-box" style="margin-top:12px"><div class="notice-title">🍼 每日奶量提醒</div>'+
     '<div class="notice-text">每日奶量需保证400-600ml（母乳/配方奶/牛奶均可），可安排在早起、上午加餐、午睡后和睡前。维生素D每日补充600IU，配合15分钟户外日晒促进钙吸收。</div></div>';
-  h+='<div style="margin-top:16px"><div class="page-title" style="font-size:16px;margin-bottom:10px">📋 辅食食谱大全</div>'+
+  h+='<div style="margin-top:16px"><div class="page-title" style="font-size:20px;margin-bottom:10px">📋 辅食食谱大全</div>'+
     '<div class="notice-box" style="margin:0 0 12px"><div class="notice-title">点击任意菜品查看制作方法</div>'+
     '<div class="notice-text">以下收录本周所有辅食的详细做法，含食材用量、分步图解和小贴士。配图菜品有实拍参考，其余用图标标注。</div></div>';
   var rendered={};
@@ -1318,16 +1395,16 @@ function renderFood(){
     });
   });
   h+='</div>';
-  h+='<div style="margin-top:16px"><div class="page-title" style="font-size:16px;margin-bottom:10px">🗓️ 本周完整菜单</div>';
+  h+='<div style="margin-top:16px"><div class="page-title" style="font-size:20px;margin-bottom:10px">🗓️ 本周完整菜单</div>';
   FOOD_MENU.forEach(function(day){
-    h+='<div class="food-day"><div class="food-day-header" style="background:var(--lang-bg);color:var(--lang);font-size:13px">'+day.day+'</div>';
+    h+='<div class="food-day"><div class="food-day-header" style="background:var(--lang-bg);color:var(--lang);font-size:16.25px">'+day.day+'</div>';
     if(day.nutrition){
-      h+='<div style="font-size:11px;color:var(--text2);padding:4px 2px 6px;line-height:1.4">'+day.nutrition+'</div>';
+      h+='<div style="font-size:13.75px;color:var(--text2);padding:4px 2px 6px;line-height:1.4">'+day.nutrition+'</div>';
     }
     day.meals.forEach(function(m){
       var mt=getMealTime(m.type);
       var mtHtml=mt?' <span style="color:var(--text3);font-weight:400">🕐 '+mt+'</span>':'';
-      h+='<div class="food-meal"><div class="food-meal-title">'+m.type+mtHtml+'</div><div class="food-items" style="font-size:12px">'+m.dishes.join(' + ')+'</div></div>';
+      h+='<div class="food-meal"><div class="food-meal-title">'+m.type+mtHtml+'</div><div class="food-items" style="font-size:15px">'+m.dishes.join(' + ')+'</div></div>';
     });
     h+='</div>';
   });
@@ -1375,6 +1452,13 @@ function bindEvents(){
   });
   // 全局事件委托
   document.getElementById('content').addEventListener('click',function(e){
+    // 换菜
+    var swap=e.target.closest('[data-swap]');
+    if(swap){
+      e.stopPropagation();
+      swapDish(swap.dataset.swap);
+      return;
+    }
     // 模块折叠
     var header=e.target.closest('[data-toggle]');
     if(header&&!e.target.closest('[data-check]')&&!e.target.closest('[data-speak]')){
